@@ -1,20 +1,30 @@
-//desafio clase-3
+//desafio clase 4 completo/ este se entrega
+let milaPapas = 1000
+let polloVerdeo = 1050
+let pastas = 900
+let coca = 350
+let vino = 500
+let agua = 550
+//let platos = (milaPapas, polloVerdeo, pastas)
+//let bebidas = (coca, vino, agua)
 
-let cantidadPersonas
-let platoPrincipal
-let bebidas
+function menuCompleto(){
+//de acuerdo a la combinacion de pedidos que se seleccione, se aclara el pedido final con su valor
+    
+        if( platos == "milanesa c/papas" && bebidas == "coca" ){
+            return " su pedido de " + platos + " con " + bebidas + " es de un valor de " + (milaPapas + coca)
+        
+        }else if( platos == "milanesa c/papas" && bebidas == "vino") {
+            return " su pedido de " + platos + " con " + bebidas + " es de un valor de " + (milaPapas + vino)
+        }else if( platos == "pollo al verdeo" && bebidas == "vino") {
+            return " su pedido de " + platos + " con " + bebidas + " es de un valor de " + (polloVerdeo + vino)
+        }else if( platos == "pollo al verdeo" && bebidas == "coca") {
+            return " su pedido de " + platos + " con " + bebidas + " es de un valor de " + (polloVerdeo + coca)
+        }else if (platos == "" || bebidas == ""){
+            alert(" realice su pedido correctamente ")
+        }
+} 
 
-do {
-    cantidadPersonas = Number(prompt("ingresa cantidad de personas"))
-    platoPrincipal = prompt("elija su menu \n milanesa c/papas \n fideos c/bolognesa \n pollo al verdeo")
-    bebidas = prompt("elija sus bebidas \n coca cola \n pepsi \n agua")
-    if (cantidadPersonas != "" && platoPrincipal != "" && bebidas != "") {
-        alert(" su pedido para " + cantidadPersonas + " personas, de " + platoPrincipal + " con " + bebidas + " estara listo en 10 minutos")
-    break;
-    } else if (cantidadPersonas == "") {
-        alert (" pedido incompleto, vuelva a realizarlo")
-    } else if (platoPrincipal != "string") {
-        alert (" pedido imcompleto, vuelva a realizarlo")
-    }
-} while (cantidadPersonas == "" || platoPrincipal == "" || bebidas == "");
-
+ platos = prompt(" seleccione que plato desea para su cena \n 1. milanesa c/papas \n 2.pollo al verdeo ")
+ bebidas = prompt(" seleccione su bebida \n 1.coca \n 2.vino ")
+ alert(menuCompleto())
