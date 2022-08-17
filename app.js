@@ -6,25 +6,25 @@ function login() {
 
     const listaUsuarios = [usuar1, usuar2, usuar3]
     
-    let ingresar = Number(prompt("ingrese su nombre de usuario y contraseña o registrese \n1. Tengo usuario \n2. No tengo usuario"))
+    let ingresar = Number(prompt("Ingrese su nombre de usuario y contraseña o registrese \n1. Tengo usuario \n2. No tengo usuario"))
 
     function crearUsuario(){
-        let nuevoUsuario = prompt("ingrese su nombre de usuario")
-        let nuevaContraseña = prompt("ingrese su nueva clave")
+        let nuevoUsuario = prompt("Ingrese su nombre de usuario")
+        let nuevaContraseña = prompt("Ingrese su nueva clave")
         listaUsuarios.push({usuario : nuevoUsuario, contraseña: nuevaContraseña})
-        alert("creaste tu nuevo usuario bajo el nombre de " + nuevoUsuario)
+        alert("Creaste tu nuevo usuario bajo el nombre de " + nuevoUsuario)
         carrito()
     }  
         if(ingresar == 1){
-        let usuarioExistente = prompt("ingrese su nombre de usuario")
-        let contraseñaExistente = prompt("ingrese su contraseña")
+        let usuarioExistente = prompt("Ingrese su nombre de usuario")
+        let contraseñaExistente = prompt("Ingrese su contraseña")
         for (const datos of listaUsuarios){
     
         if(datos.usuario == usuarioExistente && datos.contraseña == contraseñaExistente){
-            alert("bienvenido " + usuarioExistente)
+            alert("Bienvenido " + usuarioExistente)
             carrito() 
         }else{
-            alert("datos incorrectos, vuelva a ingresarlos")
+            alert("Datos incorrectos, vuelva a ingresarlos")
             break
         }}}        
         else if(ingresar == 2){
@@ -43,28 +43,28 @@ function carrito(){
     const art2 = new remeras("negra", "M", 1100)
     const art3 = new remeras("azul", "L", 1200)
     
-    let pedido = Number(prompt(" seleccione que articulo desea comprar \n1 art1. remera gris talle S\n2 art2.remera negra talle  M\n3 art3.remera azul talle L"))
+    let pedido = Number(prompt(" Seleccione que articulo desea comprar \n1 art1. remera gris talle S\n2 art2.remera negra talle  M\n3 art3.remera azul talle L"))
 
     function error(){
-            let pedidoErroneo = (prompt(" quiere realizar su pedido correctamente \n. si \n. no "))
+            let pedidoErroneo = (prompt(" Quiere realizar su pedido correctamente \n. si \n. no "))
             if (pedidoErroneo == "si"){
                 carrito()
             }
             else if (pedidoErroneo == "no"){    
-                alert("no vuelva mas")
+                alert("No vuelva mas")
         }
     }
         if( pedido == 1 ){
-            alert( " su pedido de remera " + art1.color + " es de un valor de " + art1.precio)
-            alert( " gracias por su compra ")
+            alert( " Su pedido de remera " + art1.color + " es de un valor de " + art1.precio)
+            alert( " Gracias por su compra ")
         }
          else if( pedido == 2 ){
-            alert( " su pedido de remera " + art2.color + " es de un valor de " + art2.precio)
-            alert( " gracias por su compra ")
+            alert( " Su pedido de remera " + art2.color + " es de un valor de " + art2.precio)
+            alert( " Gracias por su compra ")
         }
         else if( pedido == 3 ){
-            alert( " su pedido de remera " + art3.color + " es de un valor de " + art3.precio)
-            alert( " gracias por su compra ")
+            alert( " Su pedido de remera " + art3.color + " es de un valor de " + art3.precio)
+            alert( " Gracias por su compra ")
             }else{
                 error()
             }
