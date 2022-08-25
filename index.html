@@ -5,9 +5,30 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="index.css">
 </head>
 <body>
-    
+    <div class="remera">
+        <p>Seleccione que color de remera desea comprar</p>
+        
+            <select name="" id="color" class="rem">
+                <option value="blanca">blanca</option>
+                <option value="negra">negra</option>
+                <option value="azul">azul</option>
+                <option value="gris">gris</option>
+            </select>
+            <select name="" id="talle">
+                <option value="small" id="small">S</option>
+                <option value="medium" id="medium">M</option>
+                <option value="large" id="large">L</option>
+            </select>
+                
+            <button id="comprar"> comprar</button>
+    </div>
+    <div class="finalizada">
+        <p id="total" class="total"></p>
+        <p id="gracias" class="gracias"></p>
+    </div>
 
     <script src="app.js"></script>
 </body>
