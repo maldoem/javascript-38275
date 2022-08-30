@@ -9,7 +9,7 @@
 </head>
 <body>
     <div class="remera">
-        <p>Seleccione que color de remera desea comprar</p>
+        <h3>Seleccione que color de remera y talle desea</h3>
         
             <select name="" id="color" class="rem">
                 <option value="blanca">blanca</option>
@@ -18,16 +18,30 @@
                 <option value="gris">gris</option>
             </select>
             <select name="" id="talle">
-                <option value="small" id="small">S</option>
-                <option value="medium" id="medium">M</option>
-                <option value="large" id="large">L</option>
+                <option value="S" id="small">S</option>
+                <option value="M" id="medium">M</option>
+                <option value="L" id="large">L</option>
             </select>
                 
-            <button id="comprar"> comprar</button>
+            <button id="agregarCarri">Agregar al carrito</button>
+        <h3>Seleccione que color de pantalon y talle desea</h3>
+            <select name="" id="colorPants" class="pants">
+                <option value="jean">jean</option>
+                <option value="negro">negro</option>
+                <option value="azul">azul</option>
+                <option value="gales">gales</option>
+            </select>
+            <select name="" id="tallePants">
+                <option value="t40" id="t40">40</option>
+                <option value="t42" id="t42">42</option>
+                <option value="t44" id="t44">44</option>
+            </select>
+                
+            <button id="agregarCarriP">Agregar al carrito</button>
+
     </div>
-    <div class="finalizada">
-        <p id="total" class="total"></p>
-        <p id="gracias" class="gracias"></p>
+    <div class="finalizada" id="finalizada">
+        
     </div>
 
     <script src="app.js"></script>

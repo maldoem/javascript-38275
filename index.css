@@ -1,46 +1,41 @@
 
-
+html {
+    font-size: 62.5%;
+}
 body{
-    box-sizing: content-box;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: repeat(5, 10rem);
-    gap: 30px;
-    background-color: cadetblue;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
-.finalizada{
-    background: rgb(228, 112, 188);
-    border: 0.4rem solid black;
-    border-radius: 5rem;
-    padding: 1rem; 
-    grid-column: 2/3;
-    grid-row: 3/4;
-    align-self: center;
-} 
 .remera{
-    padding: 5px;
-    border: 0.4rem solid blue;
-    grid-column: 2/3;
-    grid-row: 2/3;
-    text-align: center;
-    background-color: darkcyan;
-} 
-select{
-    width: 80%;
-    box-sizing: content-box;
+    background-color: rgba(232, 176, 238, 0.913);
+    font-size: 1.5rem;
+    height: 25rem;
+    border: solid rgb(224, 44, 158) 0.5rem;
+    display: flex;
+    flex-direction: column;
+    border-radius: 5rem 0 5rem 0;
+    padding: 1.2rem ;
 }
+.remera h3{
+    text-align: center;
+}
+#finalizada{
+    padding: 0.5rem;
+}
+
+#finalizada p{
+    font-size: 1.4rem;
+    background-color: rgb(233, 213, 232);
+}
+.parraJs{
+    padding: 0.3rem;
+    font-weight: bold;
+    display: flex;
+    justify-content: space-between;
+    
+}
+
 button{
-    width: 50%;
-    background-color: rgb(120, 168, 168);
-}
-.remera p{
-    text-align: center;
-    font-weight: bold;
-    box-sizing: content-box;
-}
-.total{
-    font-size: 0.5 rem ;
-    font-weight: bold;
-    color: rgb(40, 5, 236);
-    box-sizing: content-box;
+    margin-bottom: 0.5rem;
 }
