@@ -1,0 +1,25 @@
+[{
+    "art": "remera blanca",
+    "id": "remB",
+    "precio": 1000,
+    "talle": "S" 
+},
+{
+    "art": "remera negra",
+    "id": "remN",
+    "precio": 1000,
+    "talle": "S" 
+},
+{
+    "art": "remera azul",
+    "id": "remA",
+    "precio": 1000,
+    "talle": "S" 
+},
+{
+    "art": "remera gris",
+    "id": "remG",
+    "precio": 1000,
+    "talle": "S" 
+}
+]

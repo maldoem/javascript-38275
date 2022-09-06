@@ -11,13 +11,17 @@ function seleccionColor(){
     let medium = document.getElementById('medium').value
     let large = document.getElementById('large').value
 
-    if(talle == small){
-       total = `_Remera ${color}, talle ${talle} : valor de $1000`
-    }else if (talle == medium){
-        total = `_Remera ${color}, talle ${talle}: valor de $1100`
-    }else if(talle == large){
-        total = `_Remera ${color}, talle ${talle}: valor de $1200`
-    }
+    //aplico un operador ternario para suplantar al control de flujo if
+    let total = talle == small ? `_Remera ${color}, talle ${talle} : valor de $1000` : (talle == medium ? `_Remera ${color}, talle ${talle}: valor de $1100` : `_Remera ${color}, talle ${talle}: valor de $1200`)
+
+    // if(talle == small){
+    //    total = `_Remera ${color}, talle ${talle} : valor de $1000`
+    // }else if (talle == medium){
+    //     total = `_Remera ${color}, talle ${talle}: valor de $1100`
+    // }else if(talle == large){
+    //     total = `_Remera ${color}, talle ${talle}: valor de $1200`
+    // }
+    
     //traigo el id del div al cual le quiero crear el hijo
     let finalizada = document.getElementById('finalizada')
     //creo el hijo
@@ -34,13 +38,24 @@ function seleccionColor(){
     btnBorrar.innerHTML = 'X' 
     //le aviso al padre que le cree un hijo
     parrafo.appendChild(btnBorrar)
-
+    //interactuo con el localStorage
     localStorage.setItem(`parrafo`, JSON.stringify(total))
+    localStorage.getItem(`parrafo`, JSON.stringify(total))
     //creo la funcion eliminar item del carrito
     function eliminarItem(){
         parrafo.remove()
     }
+
+    //creo la funcion que te confirma que eliminaste un producto de la lista
+    function prodElim(){
+        swal ("producto eliminado",{
+            timer: "500",
+            button: false,
+          })
+    }
+    //le indico al id la funcion requerida
     btnBorrar.addEventListener('click', eliminarItem)
+    btnBorrar.addEventListener('click', prodElim)
 }
 
 
@@ -60,35 +75,43 @@ function seleccionPantalon(){
     }else if(talleP == t44){
         totalP = `_Pantalon ${colorP}, talle ${talleP}: valor de $1700`
     }
-
+    //traigo el id del div al cual le quiero crear el hijo
     let finalizada = document.getElementById('finalizada')
-
+    //creo el hijo
     let parrafo = document.createElement('p')
+    //le asigno al hijo, el contenido
     parrafo.innerHTML = totalP
+    //le asigno una clase para poder darle estilo
     parrafo.classList.add("parraJs")
-
+    //le aviso al padre que le cree el hijo
     finalizada.appendChild(parrafo)
-
+    //creo el boton borrar(HIJO), para la accion de los items agregados al carrito
     let btnBorrar = document.createElement('button')
+    //le asigno el contenido
     btnBorrar.innerHTML = 'X' 
+    //le aviso al padre que le cree un hijo
     parrafo.appendChild(btnBorrar)
-
+    //interactuo con el localStorage
     localStorage.setItem(`parrafoP`, JSON.stringify(totalP))
     localStorage.getItem(`parrafoP`, JSON.stringify(totalP))
-
+    //creo la funcion que te confirma que eliminaste un producto de la lista 
+    function prodElim(){
+        swal ("producto eliminado",{
+            timer: "500",
+            button: false,
+            
+          });
+    }
+    //creo la funcion eliminar item del carrito
     function eliminarItem(){
         parrafo.remove()
     }
+    //le indico al id la funcion requerida
     btnBorrar.addEventListener('click', eliminarItem)
-
-    function resultado(){
-
-    }
-    
+    btnBorrar.addEventListener('click', prodElim)
 }
 
 agregarCarri.addEventListener('click', seleccionColor)
 agregarCarriP.addEventListener('click', seleccionPantalon)
-
 
 
