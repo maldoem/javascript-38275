@@ -1,0 +1,33 @@
+body{
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#finalizada{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+#finalizada .produc{
+    background-color: aquamarine;
+    width: 20%;
+}
+.produc{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+img{
+    width: 100%;
+    height: 170px;
+}
+button{
+    background-color: blueviolet;
+}

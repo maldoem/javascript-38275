@@ -1,0 +1,29 @@
+[
+    {
+        "art": "remera",
+        "tipo" : "Blanca",
+        "image": "./image/remblanca.jpg",
+        "precio": 1000
+    },
+    {
+        "art": "remera",
+        "tipo" : "Azul",
+        "image": "./image/remera_azul.jpg",
+        "precio": 1100
+    },
+    {
+        "art": "remera",
+        "tipo" : "Negra",
+        "image": "./image/Camiseta-negra.jpg",
+        "precio": 1200
+    },
+    {
+        "art": "remera",
+        "tipo" : "Gris",
+        "image": "./image/rem gris.jpg",
+        "precio": 1300
+    }
+
+
+
+]
