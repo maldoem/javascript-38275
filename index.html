@@ -4,46 +4,83 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
     <link rel="stylesheet" href="index.css">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
 </head>
+<header>
+    <img src="./image/image 2.png" alt="logo" class="logo">      
+    <!-- <nav class="navbar navbar-expand-lg bg-light"> -->
+        <!-- <div class="container-fluid">  
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="./index.html"><strong>Home</strong></a>
+                    </li>
+                    
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="./pages/productos.html"><strong>Productos</strong></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="./pages/nosotros.html"><strong>Nosotros</strong></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="./pages/contactanos.html"><strong>Contactanos</strong></a>
+                    </li>
+                </ul>    
+            </div> -->
+            <button id="btncar" class="btn btn-primar" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
+        <div id="cartNotificacion">
+            <div class="notificacion" >0 </div>
+            <iconify-icon icon="emojione:shopping-cart"></iconify-icon>
+        </div>
+    </button>
+        </div>
+    </nav>
+</header> 
 <body>
-    <div class="remera">
-        <h3>Seleccione que color de remera y talle desea</h3>
-        
-            <select name="" id="color" class="rem">
-                <option value="blanca">blanca</option>
-                <option value="negra">negra</option>
-                <option value="azul">azul</option>
-                <option value="gris">gris</option>
-            </select>
-            <select name="" id="talle">
-                <option value="S" id="small">S</option>
-                <option value="M" id="medium">M</option>
-                <option value="L" id="large">L</option>
-            </select>
+    
+    
+    <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
+        <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="offcanvasRightLabel">Carrito</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+            <div id="modalProdPadre">
+                <div class="offcanvas-body">
+                    
                 
-            <button id="agregarCarri">Agregar al carrito</button>
-        <h3>Seleccione que color de pantalon y talle desea</h3>
-            <select name="" id="colorPants" class="pants">
-                <option value="jean">jean</option>
-                <option value="negro">negro</option>
-                <option value="azul">azul</option>
-                <option value="gales">gales</option>
-            </select>
-            <select name="" id="tallePants">
-                <option value="t40" id="t40">40</option>
-                <option value="t42" id="t42">42</option>
-                <option value="t44" id="t44">44</option>
-            </select>
-                
-            <button id="agregarCarriP">Agregar al carrito</button>
+                </div>   
+            </div>
+            <div class="total"><span>Total : $</span><span id="total">0</span></div>
+                <button id="vaciarCarrito">Vaciar Carrito</button>
+    </div>
+    <div id="contProductos">
 
     </div>
-    <div class="finalizada" id="finalizada">
-        
-    </div>
-    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    
+    <section class="redes">
+        <div class="inter__social">
+            <span class="iconify" data-icon="uil:instagram-alt" style="color: red;"></span>
+        </div>
+        <div class="inter__social">
+            <span class="iconify" data-icon="logos:twitter"></span>
+        </div>
+        <div class="inter__social">
+            <span class="iconify" data-icon="logos:facebook" ></span>
+        </div>
+    </section>  
+    <footer>
+        <p class="final">todos los derechos reservados, Malem.co </p>
+    </footer> 
     <script src="app.js"></script>
+    <script src="productos.js"></script>
+    <script src="https://code.iconify.design/2/2.2.1/iconify.min.js"></script>
+    <script src="https://code.iconify.design/iconify-icon/1.0.0/iconify-icon.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
+    
 </body>
 </html>

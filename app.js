@@ -1,117 +1,102 @@
+const contProductos = document.getElementById('contProductos')
+const modalProdPadre = document.getElementById('modalProdPadre')
+let notificacion = document.querySelector('.notificacion')
+const btnVaciar = document.getElementById('vaciarCarrito')
+const total = document.getElementById('total')
+let carrito = []
 
-
-let agregarCarri = document.getElementById('agregarCarri')
-let agregarCarriP = document.getElementById('agregarCarriP')
-let color
-
-function seleccionColor(){
-    color = document.getElementById('color').value
-    let talle = document.getElementById('talle').value
-    let small = document.getElementById('small').value
-    let medium = document.getElementById('medium').value
-    let large = document.getElementById('large').value
-
-    //aplico un operador ternario para suplantar al control de flujo if
-    let total = talle == small ? `_Remera ${color}, talle ${talle} : valor de $1000` : (talle == medium ? `_Remera ${color}, talle ${talle}: valor de $1100` : `_Remera ${color}, talle ${talle}: valor de $1200`)
-
-    // if(talle == small){
-    //    total = `_Remera ${color}, talle ${talle} : valor de $1000`
-    // }else if (talle == medium){
-    //     total = `_Remera ${color}, talle ${talle}: valor de $1100`
-    // }else if(talle == large){
-    //     total = `_Remera ${color}, talle ${talle}: valor de $1200`
-    // }
-    
-    //traigo el id del div al cual le quiero crear el hijo
-    let finalizada = document.getElementById('finalizada')
-    //creo el hijo
-    let parrafo = document.createElement('p')
-    //le asigno al hijo, el contenido
-    parrafo.innerHTML = total
-    //le asigno una clase para poder darle estilo
-    parrafo.classList.add("parraJs")
-    //le aviso al padre que le cree el hijo
-    finalizada.appendChild(parrafo)
-    //creo el boton borrar(HIJO), para la accion de los items agregados al carrito
-    let btnBorrar = document.createElement('button')
-    //le asigno el contenido
-    btnBorrar.innerHTML = 'X' 
-    //le aviso al padre que le cree un hijo
-    parrafo.appendChild(btnBorrar)
-    //interactuo con el localStorage
-    localStorage.setItem(`parrafo`, JSON.stringify(total))
-    localStorage.getItem(`parrafo`, JSON.stringify(total))
-    //creo la funcion eliminar item del carrito
-    function eliminarItem(){
-        parrafo.remove()
+document.addEventListener('DOMContentLoaded', () =>{
+    if(localStorage.getItem('carrito')){
+        carrito = JSON.parse(localStorage.getItem('carrito'))
+        carritoAct()
     }
+})
 
-    //creo la funcion que te confirma que eliminaste un producto de la lista
-    function prodElim(){
-        swal ("producto eliminado",{
-            timer: "500",
-            button: false,
-          })
-    }
-    //le indico al id la funcion requerida
-    btnBorrar.addEventListener('click', eliminarItem)
-    btnBorrar.addEventListener('click', prodElim)
-}
+btnVaciar.addEventListener('click', ()=>{
+    carrito.length = 0
+    carritoAct()
+})
 
-
-////////////////////////////////////////////
-
-function seleccionPantalon(){
-    let colorP = document.getElementById('colorPants').value
-    let talleP = document.getElementById('tallePants').value
-    let t40 = document.getElementById('t40').value
-    let t42 = document.getElementById('t42').value
-    let t44 = document.getElementById('t44').value
-    
-    if(talleP == t40){
-       totalP = `_Pantalon ${colorP}, talle ${talleP}: valor de $1500`
-    }else if (talleP == t42){
-        totalP = `_Pantalon ${colorP}, talle ${talleP}: valor de $1600`
-    }else if(talleP == t44){
-        totalP = `_Pantalon ${colorP}, talle ${talleP}: valor de $1700`
-    }
-    //traigo el id del div al cual le quiero crear el hijo
-    let finalizada = document.getElementById('finalizada')
-    //creo el hijo
-    let parrafo = document.createElement('p')
-    //le asigno al hijo, el contenido
-    parrafo.innerHTML = totalP
-    //le asigno una clase para poder darle estilo
-    parrafo.classList.add("parraJs")
-    //le aviso al padre que le cree el hijo
-    finalizada.appendChild(parrafo)
-    //creo el boton borrar(HIJO), para la accion de los items agregados al carrito
-    let btnBorrar = document.createElement('button')
-    //le asigno el contenido
-    btnBorrar.innerHTML = 'X' 
-    //le aviso al padre que le cree un hijo
-    parrafo.appendChild(btnBorrar)
-    //interactuo con el localStorage
-    localStorage.setItem(`parrafoP`, JSON.stringify(totalP))
-    localStorage.getItem(`parrafoP`, JSON.stringify(totalP))
-    //creo la funcion que te confirma que eliminaste un producto de la lista 
-    function prodElim(){
-        swal ("producto eliminado",{
-            timer: "500",
-            button: false,
+fetch('productos.json')
+        .then((response) =>response.json())
+        .then((productos) =>
+         productos.forEach((producto) =>{
+            const div = document.createElement("div")
+            div.classList.add('product')
+            div.innerHTML=`
+            <img src=${producto.imagen} class="imagen">
+            <div class="divProd">
+                <h3>${producto.nombre} </h3>
+                <h4> $${producto.precio}</h4>
+                <button id="agregar${producto.id}" class="btnAgregar" <iconify-icon icon="carbon:add-filled" style="color: orange;" width="20" height="20"></iconify-icon> Add</button>
+            </div>
             
-          });
-    }
-    //creo la funcion eliminar item del carrito
-    function eliminarItem(){
-        parrafo.remove()
-    }
-    //le indico al id la funcion requerida
-    btnBorrar.addEventListener('click', eliminarItem)
-    btnBorrar.addEventListener('click', prodElim)
-}
+            `  
+            contProductos.appendChild(div)
 
-agregarCarri.addEventListener('click', seleccionColor)
-agregarCarriP.addEventListener('click', seleccionPantalon)
+            const btn = document.getElementById(`agregar${producto.id}`)
+            btn.addEventListener('click', ()=>{
+                agregarAlCarrito(producto.id)
+                
+                
+            })
+           
+        })
+        )
+
+        //creo una funcion que agregue al carrito
+        const agregarAlCarrito = (prodId) => {
+            const existe = carrito.some (prod => prod.id === prodId)
+            if (existe){
+                const prod = carrito.map(prod =>{
+                    if(prod.id === prodId){
+                        prod.cantidad++
+                    }
+                })
+            }else{
+                const item = productos.find((prod) => prod.id === prodId)
+                carrito.push(item)
+                
+                console.log(carrito)
+            }
+        carritoAct()
+        }
+
+        const carritoDelete = (prodId) => {
+            const item = carrito.find((prod) => prod.id === prodId)
+            const indice = carrito.indexOf(item)
+            carrito.splice(indice,1)
+            carritoAct()
+            
+        }
+
+        const carritoAct = () =>{
+            modalProdPadre.innerHTML = ""
+
+            carrito.forEach((prod) => {
+                const div = document.createElement('div')
+                div.className = ('modalProd')
+                div.innerHTML =`
+                <img src=${prod.imagen} class="imagen">
+                <p>${prod.nombre}</p>
+                <p>Precio :  ${prod.precio*prod.cantidad}</p>
+                <p>Cantidad: <span id="cant">${prod.cantidad}</span></p>
+                <button onclick= "carritoDelete(${prod.id})" class="btnDelete">X</button>
+                `
+                modalProdPadre.appendChild(div)
+
+                localStorage.setItem('carrito', JSON.stringify(carrito))
+            })
+            notificacion.innerText = carrito.length
+            total.innerText = carrito.reduce((acc, prod) => acc + prod.precio*prod.cantidad, 0)
+        }
+
+        
+
+        
+
+        
+        
+      
 
 
